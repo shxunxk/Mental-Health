@@ -1,12 +1,10 @@
 import React from 'react'
-import { Navigate, Link } from 'react-router-dom'
-import {doSignInWithEmailAndPassword} from '../../firebase/auth'
+import { Link } from 'react-router-dom'
+import {doCreateUserWithEmailAndPassword, doSignInWithEmailAndPassword} from '../../firebase/auth'
 import {useAuth} from '../../contexts/authContext'
 import { useState } from 'react'
 
-export default function Login() {
-
-  const {userLoggedIn} = useAuth()
+export default function SignIn() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -17,13 +15,12 @@ export default function Login() {
     e.preventDefault();
     if (isSignedIn) {
       setSignedIn(true);
-      await doSignInWithEmailAndPassword(email, password);
+      await doCreateUserWithEmailAndPassword (email, password);
     }
   };
 
   return (
     <>
-    {userLoggedIn && (<Navigate to={'/home'} replace={true}/>)}
       <div className="w-1/3 bg-yellow-500 flex flex-col h-screen align-middle justify-center items-center rounded-r-3xl">
         <div className="w-2/3 bg-white rounded-2xl border border-10 border-black border-opacity-20 flex flex-col align-middle min-h-96 py-5">
           <form type='submit' onSubmit={onSubmit} className='px-10 flex flex-col justify-center align-middle items-center'>

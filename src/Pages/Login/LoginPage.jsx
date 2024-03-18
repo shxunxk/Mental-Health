@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 export default function Login() {
 
-  const {userLoggedIn} = useAuth()
+  const userLoggedIn = useAuth()
 
   const [email, setEmail] = useState('ssnagvenkar@gmail.com')
   const [password, setPassword] = useState('VITVELLORE')
@@ -22,6 +22,7 @@ export default function Login() {
 
   return (
     <>
+    <div className='flex flex-row'>
     {userLoggedIn && (<Navigate to={'/home'} replace={true}/>)}
       <div className="w-1/3 bg-yellow-500 flex flex-col h-screen align-middle justify-center items-center rounded-r-3xl">
         <div className="w-2/3 bg-white rounded-2xl border border-10 border-black border-opacity-20 flex flex-col align-middle min-h-96 py-5">
@@ -38,6 +39,11 @@ export default function Login() {
           <Link to='#' className="text-center">Not a member?</Link>
         </div>
       </div>
+      <div className='flex flex-col align-middle items-center justify-center flex-1 bg-yellow-50'>
+        <h1 className='text-8xl'>Welcome</h1>
+        <h1 className='text-2xl'>"Aiding your mental needs."</h1>
+      </div>
+    </div>
     </>
   )
 }

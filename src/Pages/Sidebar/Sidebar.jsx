@@ -18,7 +18,7 @@ import {
 export default function MultiLevelSidebar() {
 
   const options = ['Home', 'Connections', 'Find a peer', 'Explore Support Group', 'Log Out']
-  const links = ['home', '/connections', 'find-a-peer', 'support-groups']
+  const links = ['home', 'connections', 'find-a-peer', 'support-groups']
 
 const [cond, setCond] = useState(false);
   console.log(cond)
@@ -68,15 +68,17 @@ const [cond, setCond] = useState(false);
                 <line x1="2" y1="3" x2="4" y2="5" />
                 <line x1="2" y1="5" x2="4" y2="3" />
                 </svg>
-                <div className='flex flex-col justify-middle align-start items-center text-white'>
-                <List>
+                <div className='flex flex-col justify-between align-start items-center text-white'>
+                <List className="h-full">
                   {options.map((item,index)=>(
-                    <ListItem key={index}>
-                      <ListItemPrefix>
-                          <UserCircleIcon className="h-5 w-5 pr-2" />
-                      </ListItemPrefix>
-                      <Link to={`../${links[index]}`}>{item}</Link>
-                    </ListItem>
+                    <div key={index}>
+                      <ListItem className="flex flex-row pb-10">
+                        <ListItemPrefix>
+                            <UserCircleIcon className="h-5 w-5 pr-2"/>
+                        </ListItemPrefix>
+                        <Link to={`/${links[index]}`} className="text-lg">{item}</Link>
+                      </ListItem>
+                    </div>
                   ))}
                 </List>
                 </div>

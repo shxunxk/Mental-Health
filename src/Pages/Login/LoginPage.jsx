@@ -8,10 +8,9 @@ export default function Login() {
 
   const {userLoggedIn} = useAuth()
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [isSignedIn, setSignedIn] = useState(null)
-  const [errorMessage, setErrorMessage] = useState('')
+  const [email, setEmail] = useState('ssnagvenkar@gmail.com')
+  const [password, setPassword] = useState('VITVELLORE')
+  const [isSignedIn, setSignedIn] = useState(true)
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +31,6 @@ export default function Login() {
             <input placeholder='Email' onChange={(e)=>{setEmail(e.target.value)}} className='rounded-lg border border-sm border-b-black border-opacity-30 h-8 w-full p-2 mb-8'></input>
             <input placeholder='Password' onChange={(e)=>{setPassword(e.target.value)}} className='rounded-lg border border-sm border-b-black border-opacity-30 h-8 w-full p-2 mb-8'></input>
           </div>
-          {errorMessage && <div>{errorMessage}</div>}
           </form>
           <div className='flex flex-row justify-center'>
             <button className="bg-blue-800 w-fit py-1 px-4 rounded-lg mb-4 border border-yellow-500 border-3 text-white">Log In</button>

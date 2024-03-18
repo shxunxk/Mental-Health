@@ -6,7 +6,9 @@ import { onAuthStateChanged } from "firebase/auth";
 const AuthContext = React.createContext();
 
 export function useAuth() {
-  return useContext(AuthContext);
+    const authContextValue = useContext(AuthContext);
+    console.log("AuthContext value:", authContextValue);
+    return authContextValue;
 }
 
 export function AuthProvider({ children }) {
@@ -35,6 +37,8 @@ export function AuthProvider({ children }) {
         userLoggedIn,
         loading
     }
+
+    console.log("AuthContext value:", value);
 
     return(
         <AuthContext.Provider value={value}>
